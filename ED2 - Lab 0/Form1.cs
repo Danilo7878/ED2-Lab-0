@@ -13,20 +13,32 @@ using TagLib;
 
 namespace ED2___Lab_0
 {
-    public partial class Form1 : Form
+    public partial class RHYTHMN : Form
     {
-        public Form1()
+        public RHYTHMN()
         {
             InitializeComponent();
-            Dictionary<string, Canción> diccionario = new Dictionary<string, Canción>();
+            Dictionary<string, Canción> biblioteca = new Dictionary<string, Canción>();
+            Dictionary<string, List<Canción>> listas = new Dictionary<string, List<Canción>>();
             DirectoryInfo dir = new DirectoryInfo(@"C: \Users\"+Environment.UserName+ @"\Music\Rhythmn");
             foreach(var item in dir.GetFiles())
             {
                 TagLib.File Mp3File = TagLib.File.Create(item.DirectoryName + @"\" + item.Name);
                 Canción song = new Canción(Mp3File.Tag.Title, Mp3File.Tag.Performers, Mp3File.Tag.Album,
                                             Mp3File.Properties.Duration.TotalSeconds, (item.DirectoryName+ @"\"+item.Name));
-                diccionario.Add(Mp3File.Tag.Title, song);
+                biblioteca.Add(Mp3File.Tag.Title, song);
             }
+            
+        }
+
+
+
+
+
+
+        private void menú_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
         }
     }
 }
