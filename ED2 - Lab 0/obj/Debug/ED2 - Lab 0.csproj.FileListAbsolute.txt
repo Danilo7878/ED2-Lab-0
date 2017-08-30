@@ -1,1 +1,12 @@
 c:\users\danil\documents\visual studio 2015\Projects\ED2 - Lab 0\ED2 - Lab 0\bin\Debug\ED2 - Lab 0.exe.config
+C:\Users\danil\documents\visual studio 2015\Projects\ED2 - Lab 0\ED2 - Lab 0\bin\Debug\ED2 - Lab 0.exe
+C:\Users\danil\documents\visual studio 2015\Projects\ED2 - Lab 0\ED2 - Lab 0\bin\Debug\ED2 - Lab 0.pdb
+C:\Users\danil\documents\visual studio 2015\Projects\ED2 - Lab 0\ED2 - Lab 0\bin\Debug\policy.2.0.taglib-sharp.dll
+C:\Users\danil\documents\visual studio 2015\Projects\ED2 - Lab 0\ED2 - Lab 0\bin\Debug\taglib-sharp.dll
+C:\Users\danil\documents\visual studio 2015\Projects\ED2 - Lab 0\ED2 - Lab 0\bin\Debug\policy.2.0.taglib-sharp.config
+C:\Users\danil\documents\visual studio 2015\Projects\ED2 - Lab 0\ED2 - Lab 0\obj\Debug\ED2 - Lab 0.csprojResolveAssemblyReference.cache
+C:\Users\danil\documents\visual studio 2015\Projects\ED2 - Lab 0\ED2 - Lab 0\obj\Debug\ED2___Lab_0.Form1.resources
+C:\Users\danil\documents\visual studio 2015\Projects\ED2 - Lab 0\ED2 - Lab 0\obj\Debug\ED2___Lab_0.Properties.Resources.resources
+C:\Users\danil\documents\visual studio 2015\Projects\ED2 - Lab 0\ED2 - Lab 0\obj\Debug\ED2 - Lab 0.csproj.GenerateResource.Cache
+C:\Users\danil\documents\visual studio 2015\Projects\ED2 - Lab 0\ED2 - Lab 0\obj\Debug\ED2 - Lab 0.exe
+C:\Users\danil\documents\visual studio 2015\Projects\ED2 - Lab 0\ED2 - Lab 0\obj\Debug\ED2 - Lab 0.pdb
