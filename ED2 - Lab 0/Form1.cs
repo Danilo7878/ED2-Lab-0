@@ -217,6 +217,7 @@ namespace ED2___Lab_0
         //pasa a la interfaz de listas
         private void listasDeReproducciónToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            dataGridView1.Rows.Clear();
             tipo = false;
             comboBox1.Visible = true;
             label3.Visible = true;
