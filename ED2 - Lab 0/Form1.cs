@@ -24,11 +24,24 @@ namespace ED2___Lab_0
         //contiene las llaves de las canciones únicamente como ayuda para mostrar la info
         // en el dataGridView1
         List<string> llaves = new List<string>();
+        //controlar el número de canción;
+        int control;
+        // controlar play y pausa
+        bool play;
+        //define si debe reproducir una lista, una lista ordenada o toda la música
+        bool tipo = true;
+        IEnumerable<Canción> Ordenada;
+        string aux;
+        string auxNombre;
+        string auxArtista;
 
         public RHYTHMN()
         {
             InitializeComponent();
             
+            //obtiene los archivos mp3 de la carpeta Rhythmn creada en
+            //la biblioteca "música
+            //y obtiene sus tag
             DirectoryInfo dir = new DirectoryInfo(@"C: \Users\"+Environment.UserName+ @"\Music\Rhythmn");
             foreach(var item in dir.GetFiles())
             {
@@ -45,7 +58,7 @@ namespace ED2___Lab_0
         public void MostrarBiblioteca()
         {
             dataGridView1.Rows.Clear();
-            for (int i = 0; i < llaves.Count-1; i++)
+            for (int i = 0; i < llaves.Count; i++)
             {
                 dataGridView1.Rows.Add();
                 dataGridView1[0, i].Value = biblioteca[llaves[i]].GetTitle();
@@ -66,6 +79,8 @@ namespace ED2___Lab_0
             panelLista.Visible = true;
         }
 
+        //crea la lista de reproducción luego de asignarle un nombre
+        //agrega la lista como un item en un combobox
         private void btnAgregarLista_Click(object sender, EventArgs e)
         {
             if (txtNombreLista != null)
@@ -84,6 +99,7 @@ namespace ED2___Lab_0
             }
         }
 
+        //permite salir del panel de creación de lista
         private void exit1_Click(object sender, EventArgs e)
         {
             panelLista.Visible = false;
@@ -94,6 +110,7 @@ namespace ED2___Lab_0
 
         }
 
+        //permite salir del panel de agregar canción
         private void exit2_Click(object sender, EventArgs e)
         {
             panelCanción.Visible = false;
@@ -106,6 +123,7 @@ namespace ED2___Lab_0
             panelCanción.Visible = true;
         }
 
+        //agrega el objeto canción a la lista de reproducción y lo muestra en la vista
         private void btnAgregarCanción_Click(object sender, EventArgs e)
         {
             if (txtNombreCanción.Text != null)
@@ -140,8 +158,7 @@ namespace ED2___Lab_0
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (comboBox2.SelectedItem.ToString() != null)
-            {
-                IEnumerable<Canción> Ordenada;
+            {  
                 if (comboBox2.SelectedItem.ToString() == "Nombre (ascendente)")
                 {
                     Ordenada = listas[comboBox1.SelectedItem.ToString()].OrderBy(x => x.GetTitle());
@@ -193,12 +210,14 @@ namespace ED2___Lab_0
                 btnNuevaCanción.Visible = true;
                 comboBox2.Visible = true;
                 label4.Visible = true;
+                ReproducirLista.Visible = true;
             }
         }
 
         //pasa a la interfaz de listas
         private void listasDeReproducciónToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            tipo = false;
             comboBox1.Visible = true;
             label3.Visible = true;
             button1.Visible = true;
@@ -210,6 +229,7 @@ namespace ED2___Lab_0
         private void todaLaMúsicaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MostrarBiblioteca();
+            tipo = true;
             pictureBox1.Visible = true;
             label5.Visible = true;
             comboBox1.Visible = false;
@@ -220,6 +240,155 @@ namespace ED2___Lab_0
             btnNuevaCanción.Visible = false;
         }
 
+        //manda a reproducir la lista en orden 
+        private void ReproducirLista_Click(object sender, EventArgs e)
+        {
+            control = 0;
+            ReproducirDesdeUnaLista();
+        }
         
+        //oculta y muestra los controles del reproductor
+        public void MostrarBotones()
+        {
+            playPausa.Visible = true;
+            anterior.Visible = true;
+            siguiente.Visible = true;
+            Detener.Visible = true;
+        }
+        public void OcultarBotones()
+        {
+            playPausa.Visible = false;
+            anterior.Visible = false;
+            siguiente.Visible = false;
+            Detener.Visible = false;
+        }
+
+        //Reproduce la lista desde la canción indicada o en orden
+        public void ReproducirDesdeUnaLista()
+        {
+            if (comboBox2.SelectedItem != null)
+            {
+                int i = 0;
+                foreach (Canción item in Ordenada)
+                {
+                    if (i == control)
+                    {
+                        aux = item.GetDirectoryName();
+                        auxNombre = item.GetTitle();
+                        auxArtista = item.GetPerformers();
+                        break;
+                    }
+                }
+                Reproductor.URL = aux;
+                label6.Text = auxNombre + " - " + auxArtista;
+            }
+            else
+            {
+                Reproductor.URL = listas[comboBox1.SelectedItem.ToString()][control].GetDirectoryName();
+                label6.Text = listas[comboBox1.SelectedItem.ToString()][control].GetTitle() + " - " + listas[comboBox1.SelectedItem.ToString()][control].GetPerformers();
+            }   
+            play = true;
+            playPausa.Image = Properties.Resources.pausa__1_;
+            MostrarBotones();
+            
+            
+        }
+
+        //Reproduce la biblioteca desde la canción indicada o en orden
+        public void ReproducirDesdeBiblioteca()
+        {
+            Reproductor.URL = biblioteca[llaves[control]].GetDirectoryName();
+            play = true;
+            playPausa.Image = Properties.Resources.pausa__1_;
+            MostrarBotones();
+            label6.Text = biblioteca[llaves[control]].GetTitle() + " - " + biblioteca[llaves[control]].GetPerformers();
+        }
+        private void RHYTHMN_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        //manda a reproducir la canción que se seleccionó en el DGV con doble click
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            control = e.RowIndex;
+            if (tipo)
+            {
+                ReproducirDesdeBiblioteca();
+            }
+            else
+            {
+                ReproducirDesdeUnaLista();
+            }
+        }
+
+        //reproduce la canción anterior a la actual
+        private void anterior_Click(object sender, EventArgs e)
+        {
+            if (tipo)
+            {
+                if(control > 0 && control < llaves.Count)
+                {
+                    control--;
+                    ReproducirDesdeBiblioteca();
+                }
+            }
+            else
+            {
+                if (control > 0 && control < listas[comboBox1.SelectedItem.ToString()].Count)
+                {
+                    control--;
+                    ReproducirDesdeUnaLista();
+                }
+            }
+
+        }
+
+        //Reproduce la siguiente canción a la actual
+        private void siguiente_Click(object sender, EventArgs e)
+        {
+            if (tipo)
+            {
+                if (control >= 0 && control < llaves.Count -1)
+                {
+                    control++;
+                    ReproducirDesdeBiblioteca();
+                }
+            }
+            else
+            {
+                if (control >= 0 && control < listas[comboBox1.SelectedItem.ToString()].Count -1)
+                {
+                    control++;
+                    ReproducirDesdeUnaLista();
+                }
+            }
+        }
+
+        //se encargar de controlor la reproducción de una canción
+        //e intercambiar el símbolo del botón.
+        private void playPausa_Click(object sender, EventArgs e)
+        {
+            if (play)
+            {
+                Reproductor.Ctlcontrols.pause();
+                playPausa.Image = Properties.Resources.play2;
+                play = false;
+            }
+            else
+            {
+                Reproductor.Ctlcontrols.play();
+                playPausa.Image = Properties.Resources.pausa__1_;
+                play = true;
+            }
+        }
+
+        //Detiene la reproducción y oculta los controladores.
+        private void Detener_Click(object sender, EventArgs e)
+        {
+            Reproductor.Ctlcontrols.stop();
+            play = false;
+            OcultarBotones();
+        }
     }
 }

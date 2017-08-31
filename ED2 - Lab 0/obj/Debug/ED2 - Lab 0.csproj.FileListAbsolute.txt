@@ -10,3 +10,8 @@ C:\Users\danil\documents\visual studio 2015\Projects\ED2 - Lab 0\ED2 - Lab 0\obj
 C:\Users\danil\documents\visual studio 2015\Projects\ED2 - Lab 0\ED2 - Lab 0\obj\Debug\ED2 - Lab 0.exe
 C:\Users\danil\documents\visual studio 2015\Projects\ED2 - Lab 0\ED2 - Lab 0\obj\Debug\ED2 - Lab 0.pdb
 C:\Users\danil\documents\visual studio 2015\Projects\ED2 - Lab 0\ED2 - Lab 0\obj\Debug\ED2___Lab_0.RHYTHMN.resources
+C:\Users\danil\documents\visual studio 2015\Projects\ED2 - Lab 0\ED2 - Lab 0\bin\Debug\Interop.WMPLib.dll
+C:\Users\danil\documents\visual studio 2015\Projects\ED2 - Lab 0\ED2 - Lab 0\bin\Debug\AxInterop.WMPLib.dll
+C:\Users\danil\documents\visual studio 2015\Projects\ED2 - Lab 0\ED2 - Lab 0\obj\Debug\Interop.WMPLib.dll
+C:\Users\danil\documents\visual studio 2015\Projects\ED2 - Lab 0\ED2 - Lab 0\obj\Debug\AxInterop.WMPLib.dll
+C:\Users\danil\documents\visual studio 2015\Projects\ED2 - Lab 0\ED2 - Lab 0\obj\Debug\ED2 - Lab 0.csproj.ResolveComReference.cache

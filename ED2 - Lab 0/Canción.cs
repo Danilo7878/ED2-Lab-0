@@ -39,5 +39,9 @@ namespace ED2___Lab_0
         {
             return totalSeconds;
         }
+        public string GetDirectoryName()
+        {
+            return directoryName;
+        }
     }
 }

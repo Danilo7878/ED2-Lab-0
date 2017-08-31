@@ -47,6 +47,13 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.Reproductor = new AxWMPLib.AxWindowsMediaPlayer();
+            this.ReproducirLista = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.anterior = new System.Windows.Forms.PictureBox();
+            this.siguiente = new System.Windows.Forms.PictureBox();
+            this.playPausa = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panelLista = new System.Windows.Forms.Panel();
             this.exit1 = new System.Windows.Forms.Button();
@@ -58,9 +65,14 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtNombreCanción = new System.Windows.Forms.TextBox();
             this.exit2 = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.Detener = new System.Windows.Forms.Button();
             this.menú.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Reproductor)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.anterior)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.siguiente)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.playPausa)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panelLista.SuspendLayout();
             this.panelCanción.SuspendLayout();
@@ -72,7 +84,7 @@
             this.biblioteclaToolStripMenuItem});
             this.menú.Location = new System.Drawing.Point(0, 0);
             this.menú.Name = "menú";
-            this.menú.Size = new System.Drawing.Size(786, 24);
+            this.menú.Size = new System.Drawing.Size(818, 24);
             this.menú.TabIndex = 0;
             this.menú.Text = "menuStrip1";
             this.menú.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menú_ItemClicked);
@@ -163,6 +175,7 @@
             this.dataGridView1.Size = new System.Drawing.Size(762, 199);
             this.dataGridView1.TabIndex = 5;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
             // Título
             // 
@@ -237,6 +250,87 @@
             this.comboBox2.TabIndex = 9;
             this.comboBox2.Visible = false;
             this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe Script", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.label5.Location = new System.Drawing.Point(226, 65);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(409, 106);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "RHYTHMN";
+            // 
+            // Reproductor
+            // 
+            this.Reproductor.Enabled = true;
+            this.Reproductor.Location = new System.Drawing.Point(521, 450);
+            this.Reproductor.Name = "Reproductor";
+            this.Reproductor.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("Reproductor.OcxState")));
+            this.Reproductor.Size = new System.Drawing.Size(114, 67);
+            this.Reproductor.TabIndex = 12;
+            this.Reproductor.Visible = false;
+            // 
+            // ReproducirLista
+            // 
+            this.ReproducirLista.BackColor = System.Drawing.Color.DarkGreen;
+            this.ReproducirLista.Font = new System.Drawing.Font("Bradley Hand ITC", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ReproducirLista.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.ReproducirLista.Location = new System.Drawing.Point(21, 441);
+            this.ReproducirLista.Name = "ReproducirLista";
+            this.ReproducirLista.Size = new System.Drawing.Size(165, 76);
+            this.ReproducirLista.TabIndex = 13;
+            this.ReproducirLista.Text = "REPRODUCIR LISTA";
+            this.ReproducirLista.UseVisualStyleBackColor = false;
+            this.ReproducirLista.Visible = false;
+            this.ReproducirLista.Click += new System.EventHandler(this.ReproducirLista_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Kristen ITC", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.Yellow;
+            this.label6.Location = new System.Drawing.Point(240, 532);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(0, 22);
+            this.label6.TabIndex = 17;
+            // 
+            // anterior
+            // 
+            this.anterior.Image = global::ED2___Lab_0.Properties.Resources.anterior;
+            this.anterior.Location = new System.Drawing.Point(244, 452);
+            this.anterior.Name = "anterior";
+            this.anterior.Size = new System.Drawing.Size(55, 56);
+            this.anterior.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.anterior.TabIndex = 16;
+            this.anterior.TabStop = false;
+            this.anterior.Visible = false;
+            this.anterior.Click += new System.EventHandler(this.anterior_Click);
+            // 
+            // siguiente
+            // 
+            this.siguiente.Image = global::ED2___Lab_0.Properties.Resources.siguiente;
+            this.siguiente.Location = new System.Drawing.Point(385, 452);
+            this.siguiente.Name = "siguiente";
+            this.siguiente.Size = new System.Drawing.Size(55, 56);
+            this.siguiente.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.siguiente.TabIndex = 15;
+            this.siguiente.TabStop = false;
+            this.siguiente.Visible = false;
+            this.siguiente.Click += new System.EventHandler(this.siguiente_Click);
+            // 
+            // playPausa
+            // 
+            this.playPausa.Image = global::ED2___Lab_0.Properties.Resources.pausa__1_;
+            this.playPausa.Location = new System.Drawing.Point(313, 452);
+            this.playPausa.Name = "playPausa";
+            this.playPausa.Size = new System.Drawing.Size(55, 56);
+            this.playPausa.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.playPausa.TabIndex = 14;
+            this.playPausa.TabStop = false;
+            this.playPausa.Visible = false;
+            this.playPausa.Click += new System.EventHandler(this.playPausa_Click);
             // 
             // pictureBox1
             // 
@@ -354,23 +448,44 @@
             this.exit2.UseVisualStyleBackColor = false;
             this.exit2.Click += new System.EventHandler(this.exit2_Click);
             // 
-            // label5
+            // label7
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe Script", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.label5.Location = new System.Drawing.Point(226, 65);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(409, 106);
-            this.label5.TabIndex = 11;
-            this.label5.Text = "RHYTHMN";
+            this.label7.AutoSize = true;
+            this.label7.ForeColor = System.Drawing.Color.Yellow;
+            this.label7.Location = new System.Drawing.Point(70, 200);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(236, 13);
+            this.label7.TabIndex = 18;
+            this.label7.Text = "haga doble click en una canción para reproducir";
+            // 
+            // Detener
+            // 
+            this.Detener.BackColor = System.Drawing.Color.DarkRed;
+            this.Detener.Font = new System.Drawing.Font("Bradley Hand ITC", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Detener.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.Detener.Location = new System.Drawing.Point(492, 441);
+            this.Detener.Name = "Detener";
+            this.Detener.Size = new System.Drawing.Size(165, 76);
+            this.Detener.TabIndex = 19;
+            this.Detener.Text = "DETENER MÚSICA";
+            this.Detener.UseVisualStyleBackColor = false;
+            this.Detener.Visible = false;
+            this.Detener.Click += new System.EventHandler(this.Detener_Click);
             // 
             // RHYTHMN
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.ClientSize = new System.Drawing.Size(786, 511);
+            this.ClientSize = new System.Drawing.Size(818, 576);
+            this.Controls.Add(this.Detener);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.anterior);
+            this.Controls.Add(this.siguiente);
+            this.Controls.Add(this.playPausa);
+            this.Controls.Add(this.ReproducirLista);
+            this.Controls.Add(this.Reproductor);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.comboBox2);
@@ -387,9 +502,14 @@
             this.MainMenuStrip = this.menú;
             this.Name = "RHYTHMN";
             this.Text = "RHYTHMN";
+            this.Load += new System.EventHandler(this.RHYTHMN_Load);
             this.menú.ResumeLayout(false);
             this.menú.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Reproductor)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.anterior)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.siguiente)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.playPausa)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panelLista.ResumeLayout(false);
             this.panelLista.PerformLayout();
@@ -429,6 +549,14 @@
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label5;
+        private AxWMPLib.AxWindowsMediaPlayer Reproductor;
+        private System.Windows.Forms.Button ReproducirLista;
+        private System.Windows.Forms.PictureBox playPausa;
+        private System.Windows.Forms.PictureBox siguiente;
+        private System.Windows.Forms.PictureBox anterior;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button Detener;
     }
 }
 
