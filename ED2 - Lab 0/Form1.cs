@@ -279,6 +279,7 @@ namespace ED2___Lab_0
                         auxArtista = item.GetPerformers();
                         break;
                     }
+                    i++;
                 }
                 Reproductor.URL = aux;
                 label6.Text = auxNombre + " - " + auxArtista;
