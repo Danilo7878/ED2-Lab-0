@@ -261,6 +261,7 @@ namespace ED2___Lab_0
             anterior.Visible = false;
             siguiente.Visible = false;
             Detener.Visible = false;
+            label6.Text = "";
         }
 
         //Reproduce la lista desde la canción indicada o en orden
